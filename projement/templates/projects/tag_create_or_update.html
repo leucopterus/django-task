@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="table-responsive">
+        {% if form.instance.pk %}
+            <p>Tag Update</p>
+        {% else %}
+            <p>Tag Create</p>
+        {% endif %}
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {% if form.instance.pk %}
+                <button type="submit" class="btn btn-success">Update</button>
+                <a href="{{ form.instance.get_absolute_url }}" class="btn btn-primary">Go back</a>
+            {% else %}
+                <button type="submit" class="btn btn-success">Create</button>
+                <a href="{% url 'tags-list' %}" class="btn btn-primary">Return</a>
+            {% endif %}
+        </form>
+    </div>
+{% endblock %}

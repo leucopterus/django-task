@@ -1,11 +1,18 @@
 from django.contrib import admin
 
-from projects.models import Company, Project
+from projects.models import Company, Project, ProjectChanges, Tag, ProjectTagRelation
+
+
+class ProjectTagRelationInline(admin.TabularInline):
+    model = ProjectTagRelation
+    readonly_fields = ['attached_date']
+    extra = 1
 
 
 class ProjectAdmin(admin.ModelAdmin):
+    inlines = (ProjectTagRelationInline,)
     list_display = ('title', 'company', 'start_date', 'end_date')
-    list_filter = ('company__name',)
+    list_filter = ('company_id',)
     ordering = ('-start_date',)
 
     fieldsets = (
@@ -21,5 +28,13 @@ class ProjectAdmin(admin.ModelAdmin):
         return 'company',
 
 
+class ProjectTagRelationAdmin(admin.ModelAdmin):
+    fields = ['project', 'tag', 'attached_date']
+    readonly_fields = ['attached_date']
+
+
 admin.site.register(Company)
 admin.site.register(Project, ProjectAdmin)
+admin.site.register(ProjectChanges)
+admin.site.register(Tag)
+admin.site.register(ProjectTagRelation, ProjectTagRelationAdmin)

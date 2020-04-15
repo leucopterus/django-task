@@ -1,57 +1,78 @@
 [
-{
-  "model": "projects.company",
-  "pk": 1,
-  "fields": {
-    "name": "Thorgate"
+  {
+    "model": "projects.company",
+    "pk": 1,
+    "fields": {
+      "name": "Thorgate"
+    }
+  },
+  {
+    "model": "projects.project",
+    "pk": 1,
+    "fields": {
+      "company": 1,
+      "title": "GateMe",
+      "start_date": "2013-01-01",
+      "end_date": "2015-12-31",
+      "estimated_design": 240,
+      "actual_design": 200,
+      "estimated_development": 350,
+      "actual_development": 450,
+      "estimated_testing": 100,
+      "actual_testing": 89
+    }
+  },
+  {
+    "model": "projects.project",
+    "pk": 2,
+    "fields": {
+      "company": 1,
+      "title": "Comics",
+      "start_date": "2016-01-01",
+      "end_date": "2016-02-01",
+      "estimated_design": 50,
+      "actual_design": 55,
+      "estimated_development": 120,
+      "actual_development": 5,
+      "estimated_testing": 0,
+      "actual_testing": 0
+    }
+  },
+  {
+    "model": "projects.project",
+    "pk": 3,
+    "fields": {
+      "company": 1,
+      "title": "Projement",
+      "start_date": "2016-10-01",
+      "end_date": null,
+      "estimated_design": 10,
+      "actual_design": 0,
+      "estimated_development": 25,
+      "actual_development": 5,
+      "estimated_testing": 5,
+      "actual_testing": 0
+    }
+  },
+  {
+    "model": "projects.tag",
+    "pk": 1,
+    "fields": {
+      "name": "test"
+    }
+  },
+  {
+    "model": "projects.tag",
+    "pk": 2,
+    "fields": {
+      "name": "develop"
+    }
+  },
+  {
+    "model": "projects.tag",
+    "pk": 3,
+    "fields": {
+      "name": "design"
+    }
   }
-},
-{
-  "model": "projects.project",
-  "pk": 1,
-  "fields": {
-    "company": 1,
-    "title": "GateMe",
-    "start_date": "2013-01-01",
-    "end_date": "2015-12-31",
-    "estimated_design": 240,
-    "actual_design": 200,
-    "estimated_development": 350,
-    "actual_development": 450,
-    "estimated_testing": 100,
-    "actual_testing": 89
-  }
-},
-{
-  "model": "projects.project",
-  "pk": 2,
-  "fields": {
-    "company": 1,
-    "title": "Comics",
-    "start_date": "2016-01-01",
-    "end_date": "2016-02-01",
-    "estimated_design": 50,
-    "actual_design": 55,
-    "estimated_development": 120,
-    "actual_development": 5,
-    "estimated_testing": 0,
-    "actual_testing": 0
-  }
-},
-{
-  "model": "projects.project",
-  "pk": 3,
-  "fields": {
-    "company": 1,
-    "title": "Projement",
-    "start_date": "2016-10-01",
-    "end_date": null,
-    "estimated_design": 10,
-    "actual_design": 0,
-    "estimated_development": 25,
-    "actual_development": 5,
-    "estimated_testing": 5,
-    "actual_testing": 0
-  }
-}
 ]

@@ -97,6 +97,11 @@
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'tags-list' %}">Tags</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'assignment' %}">Assignment</a>
                     </li>
                     {% if request.user.is_authenticated %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Tags</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tag in tags %}
+                    <tr>
+                        <td><a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <input type="button" value="Create" onclick="location.href='{% url 'tag-create' %}';">
+    </div>
+{% endblock content %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Tag info</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ tag.name }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="button" value="Update" onclick="location.href='{% url 'tag-update' pk=tag.pk %}';">
+        <input type="button" value="Delete" onclick="location.href='{% url 'tag-delete' pk=tag.pk %}';">
+    </div>
+{% endblock content %}

@@ -5,10 +5,11 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th width="40%">Project</th>
-                    <th width="30%">Company</th>
+                    <th width="30%">Project</th>
+                    <th width="25%">Company</th>
                     <th width="15%">Estimated</th>
                     <th width="15%">Actual</th>
+                    <th width="15%">Tags</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,9 +28,21 @@
                         <td>{{ project.company.name }}</td>
                         <td>{{ project.total_estimated_hours }}</td>
                         <td>{{ project.total_actual_hours }}</td>
+                        <td>
+                            <a href="{% url 'project-tag-management' pk=project.pk slug=project.title.lower %}">
+                            {% if project.tags.all %}
+                                {% for tag in project.tags.all %}
+                                    {{ tag.name }}
+                                {% endfor %}
+                            {% else %}
+                                <strong>[+]</strong>
+                            {% endif %}
+                            </a>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
+        <a href="{% url 'dashboard' file='excel-file' %}" class="btn btn-primary">Download</a>
     </div>
 {% endblock content %}
