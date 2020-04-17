@@ -1,4 +1,5 @@
 import os
+from decimal import Decimal
 
 import xlwt
 from django.conf import settings
@@ -87,6 +88,11 @@ class ProjectUpdateView(LoginRequiredMixin, UpdateView):
     form_class = ProjectForm
     success_url = reverse_lazy('dashboard')
 
+    def get(self, request, *args, **kwargs):
+        res = super().get(request, *args, **kwargs)
+        self._set_zero_initial_values_into_form(res)
+        return res
+
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
         obj = self.model.objects.get(pk=kwargs.get('pk'))
@@ -126,6 +132,11 @@ class ProjectUpdateView(LoginRequiredMixin, UpdateView):
                 context.setdefault(field, data)
         new_obj = ProjectChanges.create(**context)
         new_obj.save()
+
+    def _set_zero_initial_values_into_form(self, res):
+        initial_data = res.context_data['form'].initial
+        for key in initial_data:
+            initial_data[key] = Decimal(0.00)
 
 
 class ProjectTagView(LoginRequiredMixin, UpdateView):
